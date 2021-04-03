@@ -144,7 +144,7 @@ class Simulation:
             # Increment the total distance travelled
             dist1 = dist2 + dist
             dist2 = dist1
-    
+            
             # Calculate the opposite and adjacent components of the direction
             # vector
             y = lat_noise(lat_func(dist1, lat_func_params), lat_noise_params)
