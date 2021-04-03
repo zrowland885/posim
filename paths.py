@@ -131,7 +131,7 @@ def ellipse_rotate_maj(d, params):
     return math.sin(aziRad)*(x - x0) + math.cos(aziRad)*(y - y0) + x0
 
 def ellipse_rotate_min(d, params):
-    """ Axis of rotated ellipse aligned with semi-major axis prior to
+    """ Axis of rotated ellipse aligned with semi-minor axis prior to
     rotation """
     import math
     
