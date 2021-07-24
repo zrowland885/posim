@@ -14,15 +14,15 @@ You can install the library via PyPI using:
 
 Positioning-Sim depends on the following external packages:
 
-- numpy
-- geographiclib
-- matplotlib
+- ``numpy``
+- ``geographiclib``
+- ``matplotlib``
 
 However, matplotlib is only used for plotting and can therefore be considered optional. The following packages from the Python standard library are alo used in the library:
 
-- math
-- concurrent
-- datetime
+- ``math``
+- ``concurrent``
+- ``datetime``
 
 ## Examples
 
