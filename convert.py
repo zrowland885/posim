@@ -46,4 +46,4 @@ def coords2path(coords=[], geo=Geodesic.WGS84, interp_func_name='linear'):
     lat_functype = types.FunctionType(lat_funcobj.co_consts[0], globals())
     lon_functype = types.FunctionType(lon_funcobj.co_consts[0], globals())
     
-    return lat_functype, lon_functype, lat_funcstr, lon_funcstr
+    return lat_functype, lon_functype, lat_funcstr, lon_funcstr, d

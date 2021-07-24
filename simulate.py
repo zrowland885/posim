@@ -24,7 +24,7 @@ class Simulation:
     Methods
     -------
     
-    __init__(geo, start_time, end_time, timestep):
+    __init__():
         Constructs all the attributes for the Simulation object.
     
     run_sim(char):
@@ -34,13 +34,7 @@ class Simulation:
         Runs simulation instances in seperate threads for multiple Characters.
     """
     
-    def __init__(self,
-                 geo = Geodesic.WGS84,
-                 start_time = datetime.strptime('01/01/2000 00:00:00',
-                                                '%d/%m/%Y %H:%M:%S'),
-                 end_time = datetime.strptime('01/01/2000 00:01:00',
-                                              '%d/%m/%Y %H:%M:%S'),
-                 timestep = 1):
+    def __init__(self):
         """
         Constructs all the attributes for the Simulation object.
         
@@ -56,10 +50,12 @@ class Simulation:
             Time increment in seconds of the readings.
         """
         
-        self.geo = geo
-        self.start_time = start_time
-        self.end_time = end_time
-        self.timestep = timestep
+        self.geo = Geodesic.WGS84
+        self.start_time = datetime.strptime('01/01/2000 00:00:00',
+                                                '%d/%m/%Y %H:%M:%S')
+        self.end_time = datetime.strptime('01/01/2000 00:01:00',
+                                              '%d/%m/%Y %H:%M:%S')
+        self.timestep = 1
 
     def run_sim(self, char):
         """
@@ -144,7 +140,7 @@ class Simulation:
             # Increment the total distance travelled
             dist1 = dist2 + dist
             dist2 = dist1
-            
+                
             # Calculate the opposite and adjacent components of the direction
             # vector
             y = lat_noise(lat_func(dist1, lat_func_params), lat_noise_params)
@@ -242,27 +238,12 @@ class Character:
     Methods
     -------
     
-    __init__(start_pos, velocity_func, lat_func, lon_func, lat_noise, 
-             lon_noise, velocity_func_params, lat_func_params, 
-             lon_func_params, lat_noise_params, lon_noise_params):
+    __init__():
         Constructs all the attributes for the Simulation object.
     
     """
     
-    def __init__(self,
-                 name                   = 'Character',
-                 start_pos              = (0.,0.),
-                 velocity_func          = (lambda t, _ : 1.),
-                 lat_func               = (lambda d, _ : d),
-                 lon_func               = (lambda d, _ : d),
-                 lat_noise              = (lambda o, _ : o),
-                 lon_noise              = (lambda o, _ : o),
-                 velocity_func_params   = None,
-                 lat_func_params        = None,
-                 lon_func_params        = None,
-                 lat_noise_params       = None,
-                 lon_noise_params       = None
-                 ):
+    def __init__(self):
         """
         Constructs all the attributes for the Simulation object.
         
@@ -302,18 +283,18 @@ class Character:
             Parameter dictionary for longitude noise function.
         """
         
-        self.name                   = name
-        self.start_pos              = start_pos
-        self.velocity_func          = velocity_func
-        self.lat_func               = lat_func
-        self.lon_func               = lon_func
-        self.lat_noise              = lat_noise
-        self.lon_noise              = lon_noise
-        self.velocity_func_params   = velocity_func_params
-        self.lat_func_params        = lat_func_params
-        self.lon_func_params        = lon_func_params
-        self.lat_noise_params       = lat_noise_params
-        self.lon_noise_params       = lon_noise_params
+        self.name                   = 'Character'
+        self.start_pos              = (0.,0.)
+        self.velocity_func          = (lambda t, _ : 1.)
+        self.lat_func               = (lambda d, _ : d)
+        self.lon_func               = (lambda d, _ : d)
+        self.lat_noise              = (lambda o, _ : o)
+        self.lon_noise              = (lambda o, _ : o)
+        self.velocity_func_params   = None
+        self.lat_func_params        = None
+        self.lon_func_params        = None
+        self.lat_noise_params       = None
+        self.lon_noise_params       = None
 
 
 class Plot:
@@ -339,7 +320,7 @@ class Plot:
     def __init__(self):
         pass
         
-    def plot_combined(self, results):
+    def plot_combined(self, results, legend=True):
         """
         Plots latitude against longitude, latitude against time and longitude
         against time as seperate axes in the same figure.
@@ -384,7 +365,9 @@ class Plot:
         fig.tight_layout()
         fig.subplots_adjust(top=0.95)
         
-        plt.legend()
+        if legend:
+            plt.legend()
+            
         plt.show()
         
     def plot_single(self, results, xlabel, ylabel, fig_title):

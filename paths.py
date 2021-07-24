@@ -30,7 +30,6 @@ def random(d, params):
 def linear_lon(d, params):
     import math
     if params == None:
-        print('hmm')
         aziDeg = 45
     else:
         aziDeg = params['aziDeg']
@@ -51,6 +50,33 @@ def linear(d, params):
     elif params['ordinate'] == 'lon':
         func = linear_lon
     return func(d, params)
+
+def meandering(d, params):
+    """ A path that changes direction in increments based on defined input
+    lists of distance increments and azimuth angles. Moves linearly."""
+    
+    splits = params['splits']
+    linear_params = {'aziDeg': 45}
+    
+    for i in range(0, len(splits)-1):
+        
+        if d >= splits[i] and d < splits[i+1]:
+            linear_params['aziDeg'] = params['aziDegs'][i]
+            
+    if params['ordinate'] == 'lat':
+        func = linear_lat
+    elif params['ordinate'] == 'lon':
+        func = linear_lon
+    
+    return func(d, linear_params)
+
+def meandering_lat(d, params):
+    params['ordinate'] = 'lat'
+    return meandering(d, params)
+
+def meandering_lon(d, params):
+    params['ordinate'] = 'lon'
+    return meandering(d, params)
 
 
 # TRIGONOMETRIC PATHS
