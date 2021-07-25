@@ -18,11 +18,7 @@ Positioning-Sim depends on the following external packages:
 - ``geographiclib``
 - ``matplotlib``
 
-However, matplotlib is only used for plotting and can therefore be considered optional. The following packages from the Python standard library are alo used in the library:
-
-- ``math``
-- ``concurrent``
-- ``datetime``
+However, matplotlib is only used for plotting and can therefore be considered optional.
 
 ## Examples
 
