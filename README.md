@@ -8,7 +8,7 @@ Posim (short for Positioning Simulator) was created as a tool that can easily ge
 
 ## Installation
 
-You can install the library via PyPI using:
+You can install the library via PyPI (https://pypi.org/project/posim/) using:
 
 `pip install posim`
 
