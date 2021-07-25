@@ -6,10 +6,7 @@ An example of a randomly moving meandering path.
 import random
 import numpy as np
 
-import paths
-import velocities
-import noise
-from simulate import Simulation, Character, Plot
+from posim import simulate, paths
 from datetime import datetime
 
 
@@ -50,14 +47,14 @@ lat_func_params = {'ordinate':'lat', 'splits': splits, 'aziDegs': aziDegs}
 lon_func_params = {'ordinate':'lon', 'splits': splits, 'aziDegs': aziDegs}
 
 # Create character instance
-char = Character()
+char = simulate.Character()
 char.lat_func = paths.meandering
 char.lat_func_params = lat_func_params
 char.lon_func = paths.meandering
 char.lon_func_params = lon_func_params
 
 # Create simulation instance
-sim = Simulation()
+sim = simulate.Simulation()
 sim.start_time = datetime.strptime('01/01/21 00:00:00', '%d/%m/%y %H:%M:%S')
 sim.end_time = datetime.strptime('01/01/21 00:02:00', '%d/%m/%y %H:%M:%S')
 
@@ -65,4 +62,4 @@ sim.end_time = datetime.strptime('01/01/21 00:02:00', '%d/%m/%y %H:%M:%S')
 results = sim.run_sim(char)
 
 # Plot results
-Plot().plot_combined(results)
+simulate.Plot().plot_combined(results)

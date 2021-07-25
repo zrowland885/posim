@@ -4,9 +4,7 @@ An example of converting a list of coordinates to a linear path function, then
 simulating the path with some noise.
 """
 
-import noise
-from convert import coords2path
-from simulate import Simulation, Character, Plot
+from posim import simulate, noise, convert
 from datetime import datetime
 import time
 
@@ -37,7 +35,7 @@ snowdon_pyg_wgs84 = [
     ]
 
 # Reviewing the function strings can be useful for debugging
-latf, lonf, latfstr, lonfstr, dist = coords2path(snowdon_pyg_wgs84)
+latf, lonf, latfstr, lonfstr, dist = convert.coords2path(snowdon_pyg_wgs84)
 
 # Time elapsed in seconds
 stop_time = dist / walk_speed
@@ -46,7 +44,7 @@ stop_time = dist / walk_speed
 stop_time_hhmmss = time.strftime('%H:%M:%S', time.gmtime(stop_time))
 
 # Create a character instance with some noise
-char = Character()
+char = simulate.Character()
 char.lat_func = latf
 char.lon_func = lonf
 char.lat_noise = noise.random
@@ -60,11 +58,11 @@ char.velocity_func_params = {'velocity': walk_speed, 'stop_time': stop_time}
 # Create the simulation
 # The route takes about 1:22 hrs at 1 m/s. According to google maps it should
 # take 1:24 hrs so this makes sense given an uphill pace.
-sim = Simulation()
+sim = simulate.Simulation()
 sim.start_time = datetime.strptime('01/01/21 00:00:00', '%d/%m/%y %H:%M:%S')
 sim.end_time = datetime.strptime('01/01/21 01:20:00', '%d/%m/%y %H:%M:%S')
 sim.timestep = 30
 
 # Plot the results
 results = sim.run_sim(char)
-Plot().plot_combined(results)
+simulate.Plot().plot_combined(results)
