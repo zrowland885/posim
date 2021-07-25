@@ -1,5 +1,5 @@
 Metadata-Version: 2.1
-Name: posim-zrowland885
+Name: posim
 Version: 0.1
 Summary: A library for generating simulated positioning data for testing GNSS applications.
 Home-page: https://github.com/zrowland885/posim
