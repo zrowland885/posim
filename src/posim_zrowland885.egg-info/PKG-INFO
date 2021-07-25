@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: posim-zrowland885
+Version: 0.1
+Summary: A library for generating simulated positioning data for testing GNSS applications.
+Home-page: https://github.com/zrowland885/posim
+Author: zrowland885
+Author-email: zrowland885@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/zrowland885/posim/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# posim
+
+A library for generating simulated positioning data for testing GNSS applications.
+
+## Introduction
+
+Posim (short for Positioning Simulator) was created as a tool that can easily generate simualted GNSS data in any desired path, using real coordinate systems facilitated by [geographiclib](https://geographiclib.sourceforge.io/html/python/). It should however be trivial to modify the code to use a different geodesic routine library to calculate the coordinates.
+
+## Installation
+
+You can install the library via PyPI using:
+
+`pip install posim`
+
+Posim depends on the following external packages:
+
+- ``numpy``
+- ``geographiclib``
+- ``matplotlib``
+
+However, matplotlib is only used for plotting and can therefore be considered optional.
+
+## Examples
+
+...
+
+
